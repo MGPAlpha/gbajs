@@ -87,8 +87,8 @@ function fixAudio() {
 
 window.onclick = fixAudio;
 window.onkeydown = fixAudio;
-context.webkitImageSmoothingEnabled = true;
-context.mozImageSmoothingEnabled = true;
+// context.webkitImageSmoothingEnabled = true;
+// context.mozImageSmoothingEnabled = true;
 
 function fadeOut(id, nextId, kill) {
 	var e = document.getElementById(id);
@@ -325,6 +325,7 @@ document.addEventListener('webkitfullscreenchange', function() {
 		<p id="openDebug" onclick="enableDebug()">Debugger</p>
 	</div>
 </section> -->
+<p>Browser emulators can be fickle so if the game doesn't run, try reloading.</p>
 <ul id="links">
 	<li>Game © 2021-2022 Mitchell Philipp</li>
 	<li><a href="https://mgpalpha.itch.io/">itch.io</a></li>
