@@ -79,15 +79,20 @@ window.onload = function() {
 }
 
 function loadGame() {
-	gba.reset();
-
-	loadRom('resources/game.gba', function(rom) {
-		gba.setRom(rom);
-	});
-	gba.runStable();
-
 	document.getElementById("load-game").classList.add("dead");
-	if (gba.audio.context.state == "suspended") gba.audio.context.resume();
+
+	setTimeout(() => {
+
+		gba.reset();
+	
+		loadRom('resources/game.gba', function(rom) {
+			gba.setRom(rom);
+		});
+		gba.runStable();
+	
+		if (gba.audio.context.state == "suspended") gba.audio.context.resume();
+	}, 1000);
+
 }
 
 function fadeOut(id, nextId, kill) {
