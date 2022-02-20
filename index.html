@@ -70,10 +70,7 @@ window.onload = function() {
 			pixelatedBox.parentElement.removeChild(pixelatedBox);
 		}
 
-		loadRom('resources/game.gba', function(rom) {
-			gba.setRom(rom);
-		});
-		gba.runStable();
+		
 		// setPixelated(true);
 	} else {
 		var dead = document.getElementById('controls');
@@ -81,14 +78,17 @@ window.onload = function() {
 	}
 }
 
-function fixAudio() {
+function loadGame() {
+	gba.reset();
+
+	loadRom('resources/game.gba', function(rom) {
+		gba.setRom(rom);
+	});
+	gba.runStable();
+
+	document.getElementById("load-game").classList.add("dead");
 	if (gba.audio.context.state == "suspended") gba.audio.context.resume();
 }
-
-window.onclick = fixAudio;
-window.onkeydown = fixAudio;
-// context.webkitImageSmoothingEnabled = true;
-// context.mozImageSmoothingEnabled = true;
 
 function fadeOut(id, nextId, kill) {
 	var e = document.getElementById(id);
@@ -325,6 +325,7 @@ document.addEventListener('webkitfullscreenchange', function() {
 		<p id="openDebug" onclick="enableDebug()">Debugger</p>
 	</div>
 </section> -->
+<br /><button id="load-game" onclick="loadGame();">Load Game</button>
 <p>Browser emulators can be fickle so if the game doesn't run, try reloading.</p>
 <ul id="links">
 	<li>Game © 2021-2022 Mitchell Philipp</li>
